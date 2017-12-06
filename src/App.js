@@ -8,29 +8,49 @@ class App extends Component {
     super(props)
     this.state = {
       message: 'Like',
-      count: 0
+      count: 0,
+      isCount:true
     }
     this.changeLike = this.changeLike.bind(this)
+    this.toggleCount = this.toggleCount.bind(this)
   }
   componentDidMount() {
     setInterval(() => {
-      this.setState({count: this.state.count + 1})
+      if(this.state.isCount){
+        this.setState({count: this.state.count + 1})
+      }
     }, 1000)
   }
 
   changeLike() {
-    this.setState({message: 'unlike'})
+    this.setState({message: 'Unlike'})
+  }
+
+  toggleCount() {
+    this.setState({isCount: !this.state.isCount})
   }
 
   render() {
     return (
-      <div className="App">
-        <p>{this.state.count}</p>
-        <p>{this.state.message}</p>
-        <p><button onClick={this.changeLike}>Change</button></p>
-        <Header />
-        <Content title='d0mmie' />
-        <Footer />
+      <div className='container'>
+        <div className="jumbotron">
+          <Header />
+          <hr className="my-4" />
+          <div>
+            <p className='lead'>
+              <span>[ {this.state.count} ]</span>&nbsp;&nbsp;&nbsp;<span>[ Counting: {this.state.isCount.toString()} ]</span>&nbsp;&nbsp;&nbsp;<button className="btn btn-primary" onClick={this.toggleCount}>Toggle</button>
+            </p>
+            <p className='lead'>
+              <span>[ {this.state.message} ]</span>&nbsp;&nbsp;&nbsp;<button className="btn btn-primary" onClick={this.changeLike}>Change</button>
+            </p>
+          </div>
+          <Content title='d0mmie' />
+          <hr className="my-4" />
+          <p className="lead">
+            <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </p>
+          <Footer />
+        </div>
       </div>
     );
   }
