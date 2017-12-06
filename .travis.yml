@@ -1,0 +1,17 @@
+cache:
+  # yarn:true
+  directories:
+  - node_modules # cache node_module
+language: node_js # set language to node_js
+node_js:
+  9 # use node version 9
+branches:
+  only: 
+  - master # auto build and deploy in only master branch
+install:
+- npm i -g yarn # install yarn
+script: # run after installed
+- yarn install # install node module
+- yarn run build # build project
+after_success:
+- surge --project ./build --domain cla55room.surge.sh
