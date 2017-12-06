@@ -4,6 +4,7 @@ export default class Content extends React.Component {
     render() {
         return (
             <div>
+                <p>{this.props.title}</p>
                 <p>{`I used to believe`}</p>                
                 <p>{`We were burnin' on the edge of somethin' beautiful`}</p>
                 <p>{`Somethin' beautiful`}</p>
