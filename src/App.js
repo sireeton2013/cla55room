@@ -46,9 +46,6 @@ class App extends Component {
           </div>
           <Content title='d0mmie' />
           <hr className="my-4" />
-          <p className="lead">
-            <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </p>
           <Footer />
         </div>
       </div>
