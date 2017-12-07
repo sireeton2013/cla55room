@@ -9,10 +9,13 @@ class App extends Component {
     this.state = {
       message: 'Like',
       count: 0,
-      isCount:true
+      isCount: true,
+      reactMessage: '',
+      inputMessage: ''
     }
     this.changeLike = this.changeLike.bind(this)
     this.toggleCount = this.toggleCount.bind(this)
+    this.addReact = this.addReact.bind(this)
   }
   componentDidMount() {
     setInterval(() => {
@@ -28,6 +31,14 @@ class App extends Component {
 
   toggleCount() {
     this.setState({isCount: !this.state.isCount})
+  }
+
+  addReact() {
+    this.setState({reactMessage: this.state.reactMessage + 'React'})
+  }
+
+  setInput(e) {
+    this.setState({inputMessage: e.target.value})
   }
 
   render() {
@@ -47,6 +58,21 @@ class App extends Component {
           <Content title='d0mmie' />
           <hr className="my-4" />
           <Footer />
+        </div>
+        <div className="jumbotron">
+          <h1 className='display-3'>Day 3</h1>
+          <hr className="my-4" />
+          <div>
+            <p className='lead'>
+            <button className="btn btn-primary" onClick={this.addReact}>Append</button>&nbsp;&nbsp;&nbsp;<span style={{color:'red'}} >[ {this.state.reactMessage} ]</span>
+            </p>
+            <p className='lead'>
+              [ Welcome: {this.state.inputMessage} ]
+            </p>
+            <p className="lead">
+              <input className='form-control' type="text" value={this.state.inputMessage} onChange={this.setInput.bind(this)} />
+            </p>
+          </div>
         </div>
       </div>
     );
